@@ -1,23 +1,18 @@
-import {
-  Component,
-  OnInit,
-  OnDestroy,
-  ChangeDetectorRef,
-  HostListener,
-} from "@angular/core";
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from "@angular/core";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { ROUTE_TRANSITION } from "../../../app.animation";
-//import { ClientesService } from "app/services/clientes.service";
 import { LocalStorageService } from "angular-2-local-storage";
 import { MensagemService } from "app/shared/mensagem/mensagem.service";
 import { LocalSystemService } from "app/services/localsystem.service";
 import { DepositoComponent } from "../deposito/deposito.component";
+import { AtivoComponent } from "../ativo/ativo.component";
 import { FormControl } from "@angular/forms";
 import { VeterinariosService } from "app/services/veterinarios.service";
 import { MatTableDataSource } from "@angular/material/table";
 import { UsuarioService } from "app/services/usuario.service";
 import { UsuarioModel } from "app/models/usuario/UsuarioModel";
 import { PosicaoModel } from "app/models/usuario/PosicaoModel";
+import { AtivoModel } from "app/models/usuario/AtivoModel";
 
 @Component({
   selector: "home",
@@ -47,6 +42,16 @@ export class StoreFrontBudgetComponent implements OnDestroy, OnInit {
   public dataTable: any[];
   public dataSource: MatTableDataSource<any>;
 
+
+  displayedColumns2 = [
+    "symbol",
+    "currentPrice"
+  ];
+  public dataTable2: any[];
+  public dataSource2:MatTableDataSource<any>;
+
+
+
   dataContratacao: string;
 
   DATE = new FormControl(new Date());
@@ -64,7 +69,7 @@ export class StoreFrontBudgetComponent implements OnDestroy, OnInit {
 console.log(0);
       this.usuario = this.local.get("usuario");
       this.PesquisarUsuarioPosicao(this.usuario.cpf);
-      
+      this.PesquisarAtivo();
   }
 
   /*  Flag de controle de modal */
@@ -78,13 +83,15 @@ console.log(0);
 
   /*  Diálogos */
   /* /////////////////////////////// */
-  /* dialogClientRegister() {
-    const dialogRef = this.dialog.open(ClientRegisterComponent, {
+   dialogClientRegister() {
+    const dialogRef = this.dialog.open(AtivoComponent, {
       id: "client-register",
+      //width: "540px",
+      //height: "385px",
     });
     this.ModalOpen = true;
     dialogRef.afterClosed().subscribe((r) => (this.ModalOpen = false));
-  } */
+  } 
 
   dialogProviderRegister() {
     const dialogRef = this.dialog.open(DepositoComponent, {
@@ -112,13 +119,13 @@ console.log(0);
     dialogRef.afterClosed().subscribe((r) => (this.ModalOpen = false));
   } */
 
-  /* dialogAttendanceRegister() {
-    const dialogRef = this.dialog.open(AttendanceComponent, {
+   /* dialogAttendanceRegister() {
+    const dialogRef = this.dialog.open(AtivoComponent, {
       id: "attendance-register",
     });
     this.ModalOpen = true;
     dialogRef.afterClosed().subscribe((r) => (this.ModalOpen = false));
-  } */
+  }  */
 
 
   /*  Implementações do componente */
@@ -167,10 +174,12 @@ console.log(0);
 
 
   
-  SelecionarHorario(horario: any) {
+  Selecionar(linha: any) {
     console.log(9);
     this.clickCount++;
     var evento: any = event;
+    console.log(linha);
+    //console.log(this.quantidades);
     setTimeout(() => {
         if (this.clickCount === 1) {
              console.log(evento);
@@ -183,11 +192,13 @@ console.log(0);
         } else if (this.clickCount === 2) {
             // double
             //this.dialogHorarioRegister(horario);
+            this.local.set("ativo", linha);
+            this.dialogClientRegister();
         }
         this.clickCount = 0;
     }, 250)
   }
-
+  
   PesquisarUsuarioPosicao(cpf){
     this.IsLoading = true;
     this.usuarioService.UsuarioPosicao(cpf)
@@ -197,10 +208,10 @@ console.log(0);
         this.IsLoading = false;
         this.dataTable = value.positions; 
         this.dataSource = new MatTableDataSource<PosicaoModel>(this.dataTable);
-        console.log(this.dataSource);
+        //console.log(this.dataSource);
         this.change.markForCheck();
-        console.log(this.SaldoAtual);
-        console.log(value);
+        //console.log(this.SaldoAtual);
+        //console.log(value);
     },(error) => {
         console.log(error);
         this.IsLoading = false;
@@ -208,6 +219,25 @@ console.log(0);
         this.dataSource = new MatTableDataSource<PosicaoModel>(this.dataTable);
     });
  }
+
+ PesquisarAtivo(){
+  this.IsLoading = true;
+  this.usuarioService.Ativo()
+  .subscribe((value) => {
+      this.IsLoading = false;
+      this.dataTable2 = value; 
+      this.dataSource2 = new MatTableDataSource<AtivoModel>(this.dataTable2);
+      //console.log(this.dataSource2);
+      this.change.markForCheck();
+      //console.log(this.SaldoAtual);
+      //console.log(value);
+  },(error) => {
+      console.log(error);
+      this.IsLoading = false;
+      this.dataTable2 = []; 
+      this.dataSource2 = new MatTableDataSource<AtivoModel>(this.dataTable2);
+  });
+}
 
 
   /**

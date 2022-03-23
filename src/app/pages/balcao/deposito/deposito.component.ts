@@ -28,7 +28,8 @@ export class DepositoComponent implements OnInit {
   checked: boolean;
   ModalOpen: boolean = false;
   usuario: UsuarioModel; 
-
+  public IsLoading: boolean = false;
+  
   public constructor(
     private dialog: MatDialogRef<DepositoComponent>,
     private formBuilder: FormBuilder,

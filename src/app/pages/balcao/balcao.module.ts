@@ -39,9 +39,9 @@ import { BalcaoRoutingModule } from './balcao.routing';
 import { StoreFrontBudgetComponent } from './home/home.component';
 import { InputFieldSelectComponent } from 'app/shared/inputs/input-field-select/input-field-select.component';
 import { ConfirmacaoComponent } from 'app/shared/mensagem/confirmacao.component';
-//import { AnimalRegisterComponent } from './animal-register/animal-register.component';
 import { ScrollGridComponent } from 'app/shared/components/scroll-grid/scroll-grid.component';
 import { DepositoComponent } from './deposito/deposito.component';
+import { AtivoComponent } from './ativo/ativo.component';
 
 @NgModule({
   imports: [
@@ -79,11 +79,9 @@ import { DepositoComponent } from './deposito/deposito.component';
     MatSpinner,
     InputFieldSelectComponent,
     ConfirmacaoComponent,
-    //AnimalRegisterComponent,
     ScrollGridComponent,
     DepositoComponent,
-    //AttendanceComponent, 
-    //AttendanceSearchComponent
+    AtivoComponent 
    ],
   exports: [
     CommonModule

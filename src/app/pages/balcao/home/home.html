@@ -10,10 +10,10 @@
                 <button (click)="dialogAttendanceRegister()"><i class="fa fa-archive" aria-hidden="true"></i></button>
                 <div class="tooltip">Atendimento</div>
               </li> -->
-              <li>
+              <!-- <li>
                 <button (click)="dialogClientRegister()"><i class="fa fa-money" aria-hidden="true"></i></button>
                 <div class="tooltip">Comprar Ações</div>
-              </li>
+              </li> -->
               <li>
                 <button (click)="dialogProviderRegister()"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
                 <div class="tooltip">Depósito</div>
@@ -102,7 +102,55 @@
          <ul class="category group-inline">
           Saldo consolidado:   R${{this.SaldoConsolidado}}
         </ul>
-      
+       
+
+        <br>
+        <br>
+
+        <section class="box group">
+          <div class="block">
+            <header>
+              <p class="label-bar">Lista de Ativos</p>
+            </header>
+        
+            <div class="address-grid group-inline">
+        
+                <div class="address-list fm-group size-100">
+                              
+                    <div class="scrollbar">
+                          <elastic-scrollbar class="scrollbar-container">
+                            
+                             <mat-table #table [dataSource]="dataSource2" >
+                                      <mat-header-row *cdkHeaderRowDef="displayedColumns2" ></mat-header-row>
+                                      <mat-row *cdkRowDef="let row; columns: displayedColumns2;"
+                                      (click)="Selecionar(row)">
+                                      </mat-row>
+                            
+                              <ng-container cdkColumnDef="symbol">
+                                  <mat-header-cell *cdkHeaderCellDef fxFlex="30">Descrição</mat-header-cell>
+                                  <mat-cell *cdkCellDef="let row" fxFlex="30"> {{row.symbol}} </mat-cell>
+                              </ng-container>
+                            
+                               
+                               <ng-container cdkColumnDef="currentPrice">
+                                  <mat-header-cell *cdkHeaderCellDef fxFlex="20">Preço</mat-header-cell>
+                                  <mat-cell *cdkCellDef="let row" fxFlex="20"> {{row.currentPrice}} </mat-cell>
+                              </ng-container>
+        
+                            </mat-table>
+                            
+                          </elastic-scrollbar>
+                        </div>
+                            
+                      </div>
+                    </div>
+        
+        </div>
+        </section>
+        
+
+
+
 
       </div>
 

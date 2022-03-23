@@ -27,7 +27,7 @@ export class ContactService extends BaseFormService<ContactModel> {
     super(http, url);
   }
 
-  recuperarDropdownTipoContato(): Observable<any> {   
+  /* recuperarDropdownTipoContato(): Observable<any> {   
     return this.http.get(`${this.url.Base.TipoContato}`); 
-  }
+  } */
 }

@@ -4,6 +4,7 @@ import { UrlRepositoryService } from "./url-repository.service";
 import { LocalStorageService } from "angular-2-local-storage";
 import { Observable } from "rxjs";
 import { UsuarioModel } from "app/models/usuario/UsuarioModel";
+import { AtivoModel } from "app/models/usuario/AtivoModel";
 import { UsuarioPosicaoModel } from "app/models/usuario/UsuarioPosicaoModel";
 import { BaseFormService } from "./base-form.service";
 //import { ContactModel } from "app/models/base/ContactModel";
@@ -77,6 +78,13 @@ export class UsuarioService extends BaseFormService<UsuarioModel> {
     url = this.url.Usuario.UsuarioPosicao + "?cpf=" + cpf ;
     return this.http.get<UsuarioPosicaoModel>(url);
   }
+
+  public Ativo(): Observable<AtivoModel[]> {
+    let url = "";
+    url = this.url.Usuario.Ativo;
+    return this.http.get<AtivoModel[]>(url);
+  }
+
 
   /* public PesquisarClienteContato(Termo): Observable<ApiResult<ContactModel>> {
     let url = "";

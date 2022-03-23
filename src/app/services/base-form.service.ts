@@ -10,7 +10,7 @@ export class BaseFormService<T> {
         protected http:HttpClient,
         protected urlRepository: UrlRepositoryService,
     ) {
-        this.url = urlRepository.Base;
+        //this.url = urlRepository.Base;
     }
 
     inserir(model:T):Observable<any>{

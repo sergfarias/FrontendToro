@@ -17,7 +17,8 @@ export class UrlRepositoryService {
   public Usuario = {
      UsuarioPosicao: this.Settings.BaseApi + '/pesquisa/usuarioposicao', 
     PesquisarUsuario: this.Settings.BaseApi + '/pesquisa/usuario', 
-    Deposito: this.Settings.BaseApi + '/cadastro/movimento' 
+    Deposito: this.Settings.BaseApi + '/cadastro/movimento',
+    Ativo: this.Settings.BaseApi + '/pesquisa/trends' 
   };
 
   /* public Clientes = {
