@@ -14,7 +14,6 @@ const routes: Routes = [
   }
 ];
 
-
 @Component({
   selector: 'elastic-login',
   templateUrl: './login.component.html',
@@ -23,9 +22,7 @@ const routes: Routes = [
   host: { '[@routeTransition]': '' }
 })
 
-
 export class LoginComponent implements OnInit {
-
   cpf: string;
   password: string;
   ModalOpen: boolean;
@@ -69,19 +66,4 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  /*  PesquisarUsuario(cpf, senha){
-      this.usuarioService.PesquisarUsuario(cpf, senha)
-      .subscribe((value) => {
-        this.BuscandoUsuario = false;
-        if (value == null) {
-            this.mensagem.enviar("Usuário informado não existe ou não encontrado.",false);
-            return;
-        }
-        this.router.navigate(['/home']); 
-      },(error) => {
-        this.mensagem.enviar("Usuário informado não existe ou não encontrado.",false);
-        console.log(error);
-      });
-   }
- */
 }

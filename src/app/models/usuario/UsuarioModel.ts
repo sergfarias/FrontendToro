@@ -7,7 +7,4 @@ export class UsuarioModel {
     public senha: string;
     public saldo: string;
     public DateTime: string; 
-    /* public static IsEmpty(cliente: ClienteModel) {
-        return !cliente || !cliente?.cpf || cliente?.cpf == "000.000.000-00";
-    } */
 }

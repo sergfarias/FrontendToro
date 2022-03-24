@@ -4,8 +4,8 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ROUTE_TRANSITION } from '../../../app.animation';
 import escape from 'lodash-es/escape';
-//import { ClientesService } from '../../../services/clientes.service';
 import { LocalStorageService } from 'angular-2-local-storage';
+import { Router, Routes } from '@angular/router';
 
 @Component({
   selector: 'elastic-toolbar-user-button',
@@ -21,7 +21,8 @@ export class ToolbarUserButtonComponent implements OnInit, AfterViewInit {
     public Change: ChangeDetectorRef,
     public dialog: MatDialog,
     public change: ChangeDetectorRef,
-    public local: LocalStorageService
+    public local: LocalStorageService,
+    private router: Router
   ) {
   }
 
@@ -67,6 +68,7 @@ export class ToolbarUserButtonComponent implements OnInit, AfterViewInit {
 
   public Logout() {
     //this.Auth.Logout();
+    this.router.navigate(['/']); 
   }
 
 }

@@ -1,53 +1,35 @@
-
 <section class="dialog deposito">
   <header>
     <h1>Depósito</h1>
   </header>
 
   <form [formGroup]="formDeposito">
-
     <div class="group">
-      
-      <div class="fm-inline">
-        <mat-form-field class="fm-group">
-          <input matInput placeholder="Banco Origem" type="text" maxlength="4" formControlName="bancoOrigem" [(ngModel)]="bancoOrigem">
-        </mat-form-field>
-      </div>
-
-      <div class="fm-inline">
-        <mat-form-field class="fm-group">
-          <input matInput placeholder="Agência Origem" type="text" maxlength="6" formControlName="agenciaOrigem" [(ngModel)]="agenciaOrigem">
-        </mat-form-field>
-      </div> 
-
-      <div class="fm-inline">
-        <mat-form-field class="fm-group">
-          <input matInput placeholder="Valor" type="text" maxlength="10" formControlName="valor" [(ngModel)]="valor">
-        </mat-form-field>
-      </div> 
-
-
-
+        <div class="fm-inline">
+          <mat-form-field class="fm-group">
+            <input matInput placeholder="Banco Origem" type="text" maxlength="4" formControlName="bancoOrigem" [(ngModel)]="bancoOrigem">
+          </mat-form-field>
+        </div>
+        <div class="fm-inline">
+          <mat-form-field class="fm-group">
+            <input matInput placeholder="Agência Origem" type="text" maxlength="6" formControlName="agenciaOrigem" [(ngModel)]="agenciaOrigem">
+          </mat-form-field>
+        </div> 
+        <div class="fm-inline">
+          <mat-form-field class="fm-group">
+            <input matInput placeholder="Valor" type="text" maxlength="6" formControlName="valor" [(ngModel)]="valor">
+          </mat-form-field>
+        </div> 
     </div>
 
     <br />
 
-    <!-- /////////////////////////////////////////////////////// -->
-
     <div class="buttons">
       <button type="button" style="background-color: #089ef4;" class="reset-btn" mat-button (click)="limpar()"> Limpar</button>
       <button type="button" style="background-color: #089ef4;" mat-button (click)="closeDialog()">Cancelar</button>
-
-      <mat-spinner
-      mode="indeterminate"
-      diameter="16"
-      *ngIf="GravandoVeterinarior"
-      ></mat-spinner>
-
+      <mat-spinner mode="indeterminate" diameter="16" *ngIf="Gravando"></mat-spinner>
       <button type="button" style="background-color: #089ef4;" mat-button (click)="onSubmit()" [disabled]="!formDeposito.valid">Salvar</button>
     </div>
-
-    <!-- ============================================================================================================= -->
 
     <ul class="dialog-actions">
       <li>

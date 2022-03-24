@@ -11,7 +11,7 @@ import sortBy from 'lodash-es/sortBy';
 // import * as fromRouter from '@ngrx/router-store';
 import * as fromLayout from '../core/layout/shared/layout.reducer';
 import * as fromSidenav from '../core/sidenav/shared/sidenav.reducer';
-import * as fromInbox from '../pages/inbox/shared/inbox.reducer';
+//import * as fromInbox from '../pages/inbox/shared/inbox.reducer';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
@@ -21,7 +21,7 @@ export interface State {
   // router: fromRouter.RouterReducerState;
   layout: fromLayout.State;
   sidenav: fromSidenav.State;
-  inbox: fromInbox.State;
+  //inbox: fromInbox.State;
 }
 
 
@@ -36,7 +36,7 @@ export const reducers: ActionReducerMap<State> = {
   // router: fromRouter.routerReducer,
   layout: fromLayout.reducer,
   sidenav: fromSidenav.reducer,
-  inbox: fromInbox.reducer
+  //inbox: fromInbox.reducer
 };
 
 /**
@@ -99,15 +99,15 @@ export const getSidenavCurrentlyOpen = createSelector(getSidenavState, fromSiden
  * @param state
  */
 
-export const getInboxState = (state: State) => state.inbox;
+//export const getInboxState = (state: State) => state.inbox;
 
-export const getInboxMails = createSelector(getInboxState, fromInbox.getMails);
-export const getInboxCurrentlyOpen = createSelector(getInboxState, fromInbox.getCurrentlyOpen);
-export const getInboxActiveGroup = createSelector(getInboxState, fromInbox.getActiveGroup);
-export const getInboxActiveType = createSelector(getInboxState, fromInbox.getActiveType);
-export const getInboxShowOnlyStarred = createSelector(getInboxState, fromInbox.getShowOnlyStarred);
+//export const getInboxMails = createSelector(getInboxState, fromInbox.getMails);
+//export const getInboxCurrentlyOpen = createSelector(getInboxState, fromInbox.getCurrentlyOpen);
+//export const getInboxActiveGroup = createSelector(getInboxState, fromInbox.getActiveGroup);
+//export const getInboxActiveType = createSelector(getInboxState, fromInbox.getActiveType);
+//export const getInboxShowOnlyStarred = createSelector(getInboxState, fromInbox.getShowOnlyStarred);
 
-export const getInboxMailsFiltered = createSelector(getInboxMails, getInboxActiveGroup, getInboxActiveType, getInboxShowOnlyStarred,
+/* export const getInboxMailsFiltered = createSelector(getInboxMails, getInboxActiveGroup, getInboxActiveType, getInboxShowOnlyStarred,
   (mails, group, type, onlyStarred) => {
   if (group) {
     return sortBy(mails, 'when').reverse().filter((mail) => {
@@ -128,3 +128,4 @@ export const getInboxMailsFiltered = createSelector(getInboxMails, getInboxActiv
   }
 });
 
+ */

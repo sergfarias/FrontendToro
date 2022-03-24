@@ -1,93 +1,32 @@
-
 <section class="dialog ClientRegister">
   <header>
-    <h1>Ativo</h1>
+    <h1>Comprar Ativo</h1>
   </header>
 
   <form [formGroup]="formAtivo">
-
-    
     <div class="group">
-      
       <div class="fm-inline">
         <mat-form-field class="fm-group">
-          <input matInput  type="text" maxlength="4"  value="{{sigla}}" [(ngModel)]="sigla">
+          <input matInput  type="text" maxlength="4" readonly  value="{{sigla}}" [(ngModel)]="sigla">
         </mat-form-field>
       </div>
-
       <div class="fm-inline">
         <mat-form-field class="fm-group">
-          <input matInput  type="text" maxlength="6"  value="{{preco}}" [(ngModel)]="preco">
+          <input matInput  type="text" maxlength="6" readonly value="{{preco}}" [(ngModel)]="preco">
         </mat-form-field>
       </div> 
-
       <div class="fm-inline">
         <mat-form-field class="fm-group">
-          <input matInput placeholder="Quantidade" type="text" maxlength="10" formControlName="quantidade" [(ngModel)]="quantidade">
+          <input matInput placeholder="Quantidade" type="number" maxlength="6" formControlName="quantidade" [(ngModel)]="quantidade">
         </mat-form-field>
       </div> 
-
-
-
     </div>
-
- <!-- <section class="box group">
-  <div class="block">
-    <header>
-      <p class="label-bar">Lista de Ativos</p>
-    </header>
-
-    <div class="address-grid group-inline">
-
-        <div class="address-list fm-group size-100">
-                      
-            <div class="scrollbar">
-                  <elastic-scrollbar class="scrollbar-container">
-                    
-                     <mat-table #table [dataSource]="dataSource" >
-                              <mat-header-row *cdkHeaderRowDef="displayedColumns" ></mat-header-row>
-                              <mat-row *cdkRowDef="let row; columns: displayedColumns;"
-                              (click)="Selecionar(row)">
-                              </mat-row>
-                    
-                      <ng-container cdkColumnDef="symbol">
-                          <mat-header-cell *cdkHeaderCellDef fxFlex="30">Descrição</mat-header-cell>
-                          <mat-cell *cdkCellDef="let row" fxFlex="30"> {{row.symbol}} </mat-cell>
-                      </ng-container>
-                    
-                       
-                       <ng-container cdkColumnDef="currentPrice">
-                          <mat-header-cell *cdkHeaderCellDef fxFlex="20">Preço</mat-header-cell>
-                          <mat-cell *cdkCellDef="let row" fxFlex="20"> {{row.currentPrice}} </mat-cell>
-                      </ng-container>
-
-                    </mat-table>
-                    
-                  </elastic-scrollbar>
-                </div>
-                    
-              </div>
-            </div>
-
-</div>
-</section>
- -->
-
-
     <br />
-
-    <!-- /////////////////////////////////////////////////////// -->
 
     <div class="buttons">
       <button type="button" style="background-color: #089ef4;" class="reset-btn" mat-button (click)="limpar()"> Limpar</button>
       <button type="button" style="background-color: #089ef4;" mat-button (click)="closeDialog()">Cancelar</button>
-
-      <mat-spinner
-      mode="indeterminate"
-      diameter="16"
-      *ngIf="GravandoVeterinarior"
-      ></mat-spinner>
-
+      <mat-spinner mode="indeterminate" diameter="16" *ngIf="Gravando" ></mat-spinner>
       <button type="button" style="background-color: #089ef4;" mat-button (click)="onSubmit()" [disabled]="!formAtivo.valid">Salvar</button>
     </div>
 

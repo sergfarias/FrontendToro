@@ -16,6 +16,7 @@ export class ToolbarAlphaComponent implements OnInit {
   @Input() quickpanelOpen: boolean;
   @Output() toggledSidenav = new EventEmitter();
   @Output() toggledQuickpanel = new EventEmitter();
+  
 
   constructor(
     public dialog: MatDialog,
@@ -61,6 +62,7 @@ export class ToolbarAlphaComponent implements OnInit {
 
   toggleDropdown() {
     this.isOpen = !this.isOpen;
+ 
   }
 
   onClickOutside() {

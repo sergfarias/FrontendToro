@@ -31,10 +31,8 @@ import { FormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UtilsModule } from '../../core/utils/utils.module';
-
 import { ScrollbarModule } from '../../core/scrollbar/scrollbar.module';
 import { CdkTableModule } from '@angular/cdk/table';
-
 import { BalcaoRoutingModule } from './balcao.routing';
 import { StoreFrontBudgetComponent } from './home/home.component';
 import { InputFieldSelectComponent } from 'app/shared/inputs/input-field-select/input-field-select.component';

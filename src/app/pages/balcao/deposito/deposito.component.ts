@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder } from "@angular/forms";
 import { DepositoModel } from "app/models/deposito/DepositoModel";
 import { MensagemService } from "app/shared/mensagem/mensagem.service";
 import { FormUtilService } from "app/shared/form-utils.service";
-import { VeterinariosService } from "app/services/veterinarios.service";
+import { DepositoService } from "app/services/deposito.service";
 import { LocalStorageService } from "angular-2-local-storage";
 import { MatDialog } from "@angular/material/dialog";
 import { UsuarioModel } from "app/models/usuario/UsuarioModel";
@@ -16,24 +16,18 @@ import { UsuarioModel } from "app/models/usuario/UsuarioModel";
 })
 export class DepositoComponent implements OnInit {
   @Output() returnsearch = new EventEmitter<any>();
-  BuscandoVeterinario: boolean = false;
-  GravandoVeterinario: boolean = false;
+  Gravando: boolean = false;
   @Input() resetValue: any;
-  previusLength = 0;
   formDeposito: FormGroup;
   private modeloApi: DepositoModel = new DepositoModel();
-  veterinarioData: DepositoModel;
-  public VISIBLE: boolean = false;
-  readonly: boolean;
-  checked: boolean;
-  ModalOpen: boolean = false;
+  depositoData: DepositoModel;
   usuario: UsuarioModel; 
   public IsLoading: boolean = false;
   
   public constructor(
     private dialog: MatDialogRef<DepositoComponent>,
     private formBuilder: FormBuilder,
-    private VeterinarioService: VeterinariosService,
+    private DepositoService: DepositoService,
     private formUtil: FormUtilService,
     private mensagem: MensagemService,
     public dialog2: MatDialog,
@@ -88,7 +82,7 @@ export class DepositoComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    this.GravandoVeterinario = true;
+    this.Gravando = true;
     this.formUtil.verificaValidacoes(this.formDeposito);
     if (this.formDeposito.valid) 
     {
@@ -101,26 +95,20 @@ export class DepositoComponent implements OnInit {
 
   private inserirOuAtualizar(): void {
       this.usuario = this.local.get("usuario");
-      console.log(this.modelo);
       this.modelo.usuarioId = this.usuario.id;
-      this.VeterinarioService.inserir(this.modelo).subscribe(
+      console.log(9);
+      this.DepositoService.inserir(this.modelo).subscribe(
         () => {
-          this.GravandoVeterinario = false;
+          this.Gravando = false;
           this.mensagem.enviar("Dados inseridos com sucesso.");
           this.closeDialog();
         },
         (error) => {
-          this.GravandoVeterinario = false;
+          this.Gravando = false;
           this.mensagem.enviar("Falha na inclusão do depósito.", false);
           console.log(error);
         }
       );
   }
 
-  preencherDadosVeterinario(search: DepositoModel) {
-    this.formDeposito.get("bancoOrigem").patchValue(search.bancoOrigem);
-    this.formDeposito.get("agenciaOrigem").patchValue(search.agenciaOrigem);
-    this.formDeposito.get("valor").patchValue(search.valor); 
-  }
-  
 }

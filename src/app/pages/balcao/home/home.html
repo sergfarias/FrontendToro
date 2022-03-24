@@ -6,14 +6,6 @@
         <elastic-scrollbar class="scrollbar-container">
           <nav>
             <ul>
-              <!-- <li>
-                <button (click)="dialogAttendanceRegister()"><i class="fa fa-archive" aria-hidden="true"></i></button>
-                <div class="tooltip">Atendimento</div>
-              </li> -->
-              <!-- <li>
-                <button (click)="dialogClientRegister()"><i class="fa fa-money" aria-hidden="true"></i></button>
-                <div class="tooltip">Comprar Ações</div>
-              </li> -->
               <li>
                 <button (click)="dialogProviderRegister()"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
                 <div class="tooltip">Depósito</div>
@@ -28,22 +20,30 @@
       <div class="box" >
 
           <div class="size-60">
-
             <br>
             <ul class="category group-inline">
-              Saldo atual em conta corrente:   R${{this.SaldoAtual}}
-            </ul> <br>
+              <font size=2,70>
+              <b>Correntista:   {{this.usuario.nome}}  || CPF: {{this.usuario.cpf}}</b>
+              </font>
+            </ul>
+            <hr>
+            <br>
+            <ul class="category group-inline">
+              <font size=2,70>
+              <b>Saldo atual conta corrente:   R${{this.SaldoAtual}}</b>
+              </font>
+            </ul> 
+            <hr>
+            <br>
 
             <section class="box group">
               <div class="block">
                 <header>
-                  <p class="label-bar">Lista de Ativos</p>
+                  <p class="label-bar">Meus Ativos</p>
                 </header>
 
                 <div class="address-grid group-inline">
-
                     <div class="address-list fm-group size-100">
-                                  
                         <div class="scrollbar">
                               <elastic-scrollbar class="scrollbar-container">
                                 
@@ -80,13 +80,6 @@
                                       <mat-cell *cdkCellDef="let row" fxFlex="20"> {{row.currentPrice}} </mat-cell>
                                   </ng-container>
                                           
-                                          <!-- <ng-container cdkColumnDef="geriatra">
-                                            <mat-header-cell *cdkHeaderCellDef fxFlex="10">Geriatra</mat-header-cell>
-                                            <mat-cell *cdkCellDef="let row" fxFlex="10"> 
-                                              <i class="fa fa-check" aria-hidden="true" fxShow="{{row.geriatra}}" ></i> 
-                                            </mat-cell>
-                                          </ng-container>
-                                 -->
                                 </mat-table>
                                 
                               </elastic-scrollbar>
@@ -100,61 +93,51 @@
 
          <br>
          <ul class="category group-inline">
-          Saldo consolidado:   R${{this.SaldoConsolidado}}
+           <font size="2,70" color="blue">
+              <b>
+                 Saldo consolidado:   R${{this.SaldoConsolidado}}
+              </b>
+            </font>
         </ul>
-       
-
+        <hr>
         <br>
-        <br>
-
+        
+        <ul class="category group-inline">
+          <font size="2,70">
+             <b>
+                Duplo click na lista para comprar um dos 5 títulos mais negociados nos últimos 7 dias.
+             </b>
+           </font>
+       </ul>
         <section class="box group">
           <div class="block">
-            <header>
-              <p class="label-bar">Lista de Ativos</p>
-            </header>
+              <header>
+                <p class="label-bar">Comprar Ativos</p>
+              </header>
         
-            <div class="address-grid group-inline">
-        
-                <div class="address-list fm-group size-100">
-                              
-                    <div class="scrollbar">
-                          <elastic-scrollbar class="scrollbar-container">
-                            
-                             <mat-table #table [dataSource]="dataSource2" >
+              <div class="address-grid group-inline">
+                  <div class="address-list fm-group size-100">
+                      <div class="scrollbar">
+                            <elastic-scrollbar class="scrollbar-container">
+                                <mat-table #table [dataSource]="dataSource2" >
                                       <mat-header-row *cdkHeaderRowDef="displayedColumns2" ></mat-header-row>
-                                      <mat-row *cdkRowDef="let row; columns: displayedColumns2;"
-                                      (click)="Selecionar(row)">
-                                      </mat-row>
-                            
-                              <ng-container cdkColumnDef="symbol">
-                                  <mat-header-cell *cdkHeaderCellDef fxFlex="30">Descrição</mat-header-cell>
-                                  <mat-cell *cdkCellDef="let row" fxFlex="30"> {{row.symbol}} </mat-cell>
-                              </ng-container>
-                            
-                               
-                               <ng-container cdkColumnDef="currentPrice">
-                                  <mat-header-cell *cdkHeaderCellDef fxFlex="20">Preço</mat-header-cell>
-                                  <mat-cell *cdkCellDef="let row" fxFlex="20"> {{row.currentPrice}} </mat-cell>
-                              </ng-container>
-        
-                            </mat-table>
-                            
-                          </elastic-scrollbar>
-                        </div>
-                            
+                                      <mat-row *cdkRowDef="let row; columns: displayedColumns2;"(click)="Selecionar(row)"></mat-row>
+                                      <ng-container cdkColumnDef="symbol">
+                                          <mat-header-cell *cdkHeaderCellDef fxFlex="30">Descrição</mat-header-cell>
+                                          <mat-cell *cdkCellDef="let row" fxFlex="30"> {{row.symbol}} </mat-cell>
+                                      </ng-container>
+                                      <ng-container cdkColumnDef="currentPrice">
+                                          <mat-header-cell *cdkHeaderCellDef fxFlex="20">Preço</mat-header-cell>
+                                          <mat-cell *cdkCellDef="let row" fxFlex="20"> {{row.currentPrice}} </mat-cell>
+                                      </ng-container>
+                                  </mat-table>
+                            </elastic-scrollbar>
                       </div>
-                    </div>
-        
-        </div>
-        </section>
-        
-
-
-
-
-      </div>
-
+                  </div>
+              </div>
+           </div>
+         </section>
+       </div>
     </div>
-
   </div>
 </div>
