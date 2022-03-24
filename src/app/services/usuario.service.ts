@@ -13,7 +13,6 @@ interface ApiResult<T> {
   mensagem: string;
   Data: T;
 }
-
 @Injectable({
   providedIn: "root",
 })
