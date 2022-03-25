@@ -7,6 +7,5 @@ export const environment = {
   production: false,
   googleMapsApiKey: '',
 
-  //apiUrl: 'http://172.16.100.170/ws' // URL da API Gateway
-  API_URL: "https://localhost:44304"
+  API_URL: "https://localhost:44303"
 };
